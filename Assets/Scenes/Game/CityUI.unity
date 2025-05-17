@@ -10193,6 +10193,7 @@ GameObject:
   - component: {fileID: 384714521}
   - component: {fileID: 384714520}
   - component: {fileID: 384714522}
+  - component: {fileID: 384714523}
   m_Layer: 0
   m_Name: DraggableIcon
   m_TagString: Untagged
@@ -10302,6 +10303,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &384714523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384714518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da55ded61a63414488c3c4f6dcecdccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjPlace: {fileID: 1100862663}
 --- !u!1001 &388451000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22908,6 +22922,7 @@ GameObject:
   - component: {fileID: 755971903}
   - component: {fileID: 755971902}
   - component: {fileID: 755971904}
+  - component: {fileID: 755971905}
   m_Layer: 0
   m_Name: DraggableIcon
   m_TagString: Untagged
@@ -23017,6 +23032,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &755971905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755971900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da55ded61a63414488c3c4f6dcecdccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjPlace: {fileID: 1100862663}
 --- !u!1001 &758051507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26819,6 +26847,7 @@ GameObject:
   - component: {fileID: 897247807}
   - component: {fileID: 897247806}
   - component: {fileID: 897247808}
+  - component: {fileID: 897247809}
   m_Layer: 0
   m_Name: DraggableIcon
   m_TagString: Untagged
@@ -26928,6 +26957,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &897247809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897247804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da55ded61a63414488c3c4f6dcecdccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjPlace: {fileID: 1100862663}
 --- !u!1001 &900059427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35222,6 +35264,7 @@ GameObject:
   - component: {fileID: 1100862660}
   - component: {fileID: 1100862662}
   - component: {fileID: 1100862661}
+  - component: {fileID: 1100862663}
   m_Layer: 0
   m_Name: DraggablesContainer
   m_TagString: Untagged
@@ -35316,6 +35359,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100862658}
   m_CullTransparentMesh: 1
+--- !u!114 &1100862663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100862658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047631425755f2b47bd2abfa527b8ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objtodrag: {fileID: 0}
 --- !u!1001 &1104079725
 PrefabInstance:
   m_ObjectHideFlags: 0
