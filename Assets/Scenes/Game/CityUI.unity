@@ -12520,7 +12520,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 369ebece384da584c854d533faa006bd, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12581,7 +12581,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 384714520}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1679805479}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopCoroutine
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &384714523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12594,7 +12606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da55ded61a63414488c3c4f6dcecdccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objp: {fileID: 1100862663}
 --- !u!1 &385686327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: a1eb827aa0413ab4a8b3b08c0e1a8c56, type: 3}
@@ -30333,7 +30344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 97b10b9ddd3ee8741bb43b18cc99a5d7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30394,7 +30405,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 755971902}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1679805479}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopCoroutine
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &755971905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30407,7 +30430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da55ded61a63414488c3c4f6dcecdccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objp: {fileID: 1100862663}
 --- !u!1 &756191509 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 1b0084fb56aeb6e4e90f88a0def84cf0, type: 3}
@@ -36578,7 +36600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 97b10b9ddd3ee8741bb43b18cc99a5d7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36639,7 +36661,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 897247806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1679805479}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopCoroutine
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &897247809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36652,7 +36686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da55ded61a63414488c3c4f6dcecdccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objp: {fileID: 1100862663}
 --- !u!1 &899173691 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 64be6214af4540d40882279ed35878bd, type: 3}
@@ -50121,6 +50154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TestPrefab: {fileID: 100000, guid: 4dc7028a3a83758439585b7c7c98cb27, type: 3}
+  TestEffect: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   grid: {fileID: 854091199}
   tiles: {fileID: 961609033}
 --- !u!1 &1101339472 stripped
@@ -84312,6 +84346,7 @@ GameObject:
   - component: {fileID: 1679805478}
   - component: {fileID: 1679805477}
   - component: {fileID: 1679805476}
+  - component: {fileID: 1679805479}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -84403,6 +84438,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1679805479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679805474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5def19d51b2340344ab5c390acf9a884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplaySlots:
+  - {fileID: 897247806}
+  - {fileID: 384714520}
+  - {fileID: 755971902}
 --- !u!1 &1680122650 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 1b0084fb56aeb6e4e90f88a0def84cf0, type: 3}

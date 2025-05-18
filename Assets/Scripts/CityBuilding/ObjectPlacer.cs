@@ -10,6 +10,7 @@ public class ObjectPlacer : MonoBehaviour
 {
     // prefab test - to be moved
     public GameObject TestPrefab;
+    public GameObject TestEffect;
 
     // grid test - to be moved
     public Grid grid;
@@ -53,5 +54,7 @@ public class ObjectPlacer : MonoBehaviour
 
         // Parent object to grid test - to be changed
         Instant.transform.SetParent(tiles.transform, true);
+
+        GameObject Effect = Instantiate(TestEffect, position, grid.transform.rotation);
     }
 }
