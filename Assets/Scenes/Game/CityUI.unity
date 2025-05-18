@@ -17969,7 +17969,7 @@ GameObject:
   - component: {fileID: 507686634}
   - component: {fileID: 507686633}
   m_Layer: 0
-  m_Name: BuildingsTilemap
+  m_Name: StaticBuildingsTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34284,7 +34284,7 @@ Grid:
   m_CellSize: {x: 1, y: 1, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
-  m_CellSwizzle: 1
+  m_CellSwizzle: 3
 --- !u!4 &854091200
 Transform:
   m_ObjectHideFlags: 0
@@ -50120,7 +50120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047631425755f2b47bd2abfa527b8ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TestPrefab: {fileID: 100000, guid: 00b78b03851cb0748b61d9005fb73b49, type: 3}
+  TestPrefab: {fileID: 100000, guid: 4dc7028a3a83758439585b7c7c98cb27, type: 3}
   grid: {fileID: 854091199}
   tiles: {fileID: 961609033}
 --- !u!1 &1101339472 stripped

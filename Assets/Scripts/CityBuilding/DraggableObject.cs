@@ -11,8 +11,6 @@ public class DraggableObject : MonoBehaviour, IDragHandler, IEndDragHandler
     // Get image position 
     private RectTransform _currentPos;
 
-    public ObjectPlacer objp;
-
     void Awake()
     {
         // Get initial image position in UI
@@ -27,7 +25,6 @@ public class DraggableObject : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        objp.CalculateTile();
         // Reset position when user places image on map
         ResetPosition();
     }
