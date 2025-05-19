@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Object Info")]
-public class CityObject : ScriptableObject
+[CreateAssetMenu(menuName ="Building Data")]
+public class BuildingData : ScriptableObject
 {
     public int objectId;
 
