@@ -15,4 +15,4 @@ MonoBehaviour:
   objectId: 1
   objectName: House
   objectImage: {fileID: 21300000, guid: 97b10b9ddd3ee8741bb43b18cc99a5d7, type: 3}
-  objectPrefab: {fileID: 100000, guid: 92dcd407350173049ab8c86482fadf42, type: 3}
+  objectPrefab: {fileID: 100000, guid: b366950ede623f04b9df7d22d29f9716, type: 3}
