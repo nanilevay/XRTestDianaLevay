@@ -1,11 +1,11 @@
 using UnityEngine;
 
 /// <summary>
-/// Get the grid position based on mouse click
+/// Get the grid position for object placement based on world coordinates derived from mouse
 /// </summary>
 public static class WorldToTile
 {
-    // Calculate proper tile placement
+    // Calculate proper tile placement from world raycast
     public static Vector3 CalculateTile(Vector3 WorldPos, Grid grid)
     {
         // Get position on the cell grid based on clicked world position
@@ -14,8 +14,10 @@ public static class WorldToTile
         // Center object on selected cell based on offset
         Vector3 FixedPos = grid.GetCellCenterWorld(CellPos);
 
-        FixedPos.y = 1;
+        // Adjust due to animation - test
+        FixedPos.y += 1;
 
+        // Return correct position in grid
         return FixedPos;
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Tilt the city based on mouse input x,y coordinates
+/// Tilt the city based on mouse input and an applied torque force
 /// </summary>
 public class CityTilt : MonoBehaviour
 {
@@ -15,10 +15,6 @@ public class CityTilt : MonoBehaviour
     // To store the x and y axis inputs 
     private Vector2 _mouseMovement;
 
-    // For magnitude clamping
-    [SerializeField]
-    private float _maxAngularVelocity = 10f;
-
     // To fine tune mouse sensitivity
     [SerializeField]
     private float sensitivity = 0.08f;
@@ -28,7 +24,7 @@ public class CityTilt : MonoBehaviour
     private float _returnSpeed = 0.08f;
 
     // testing - change later
-    public bool test = false;
+    public bool PhysicsOn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +32,11 @@ public class CityTilt : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = Vector3.zero;
     }
-
     private void Update()
     {
         if (Input.GetMouseButton(0))
         {
-            test = false;
+            PhysicsOn = true;
             rb.isKinematic = false;
             _mouseMovement.x = Input.GetAxis("Mouse X") * sensitivity;
             _mouseMovement.y = Input.GetAxis("Mouse Y") * sensitivity;     
@@ -49,27 +44,19 @@ public class CityTilt : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            test = true;
+            PhysicsOn = false;
             rb.isKinematic = true;
             _mouseMovement.x = 0;
             _mouseMovement.y = 0;
         }
-
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (!test)
-        {
-            rb.AddTorque(transform.forward * _mouseMovement.x * _forceStrength, ForceMode.VelocityChange);
+        if (PhysicsOn)
+            ApplyTorque();
 
-            rb.AddTorque(transform.up * _mouseMovement.y * _forceStrength, ForceMode.VelocityChange);
-
-            rb.angularVelocity = Vector3.ClampMagnitude(rb.angularVelocity, _maxAngularVelocity);
-        }
-
-        if (test)
+        else
             ReturnToOrigin();
     }
 
@@ -88,4 +75,10 @@ public class CityTilt : MonoBehaviour
             Quaternion.RotateTowards(transform.rotation, Quaternion.identity, step);
     }
 
+    public void ApplyTorque()
+    {
+        rb.AddTorque(transform.forward * _mouseMovement.x * _forceStrength, ForceMode.VelocityChange);
+
+        rb.AddTorque(transform.up * _mouseMovement.y * _forceStrength, ForceMode.VelocityChange);
+    }
 }
