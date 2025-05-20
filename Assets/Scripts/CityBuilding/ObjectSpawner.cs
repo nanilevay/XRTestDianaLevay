@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject EffectSpawner;
-
     public Transform Parent;
 
     // prefab test - move later
@@ -15,7 +12,5 @@ public class ObjectSpawner : MonoBehaviour
 
         // Parent object to grid test - to be changed
         Instant.transform.SetParent(Parent.transform, true);
-
-        EffectSpawner.SetActive(false);
     }
 }

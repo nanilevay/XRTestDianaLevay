@@ -14,6 +14,8 @@ public static class WorldToTile
         // Center object on selected cell based on offset
         Vector3 FixedPos = grid.GetCellCenterWorld(CellPos);
 
+        FixedPos.y = 1;
+
         return FixedPos;
     }
 }
