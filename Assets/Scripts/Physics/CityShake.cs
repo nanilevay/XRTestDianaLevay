@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class CityShake : MonoBehaviour
 {
+    // Get rigidbody to apply physics
     private Rigidbody rb;
 
+    // Set the speed of shake - to be finetuned
     [SerializeReference]
     private float Speed = 7;
 
+    // Set the maximum speed at which shake happens
     [SerializeField]
     public float MaxSpeed = 10;
 
+    // Strength of the force applied to the object
     [SerializeField]
     private float forceStrength = 1;
 
-    private bool _isShaking;
+    // Check whether object is shaking or not
+    public bool _isShaking;
 
     // Start is called before the first frame update
     void Start()
@@ -21,24 +26,13 @@ public class CityShake : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            _isShaking = true;
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            _isShaking = false;
-            rb.velocity = Vector2.zero;
-        }
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
         if (_isShaking)
-            rb.velocity = new Vector2(Mathf.Sin(Time.time * Speed), 0);
+        {
+            // Add force to shake city back and forth horizontally - to be fine tuned
+            rb.AddForce(transform.forward  * Mathf.Sin(Time.time * Speed) * forceStrength, 0);
+        }
     }
 }
