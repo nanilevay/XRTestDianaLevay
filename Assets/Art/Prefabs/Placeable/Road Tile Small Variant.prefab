@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a1eb827aa0413ab4a8b3b08c0e1a8c56, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fd90e2fa40e94ef4695e87c205b71631, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a1eb827aa0413ab4a8b3b08c0e1a8c56, type: 3}
@@ -105,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3054a61038d52ae47a929ee832cdfed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileCoordinates: {x: 0, y: 0}
-  TileType: 0
+  Coordinates: {x: 0, y: 0}
+  Type: 0
   Occupied: 0
   Locked: 1
