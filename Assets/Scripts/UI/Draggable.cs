@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
@@ -57,12 +56,17 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private IEnumerator FadeAnimation()
     {
         GetComponent<Animator>().SetBool("FadeOut", true);
+
         yield return new WaitForSeconds(0.4f);
+
         _currentPos.anchoredPosition = Vector2.zero;
+
         yield return new WaitForSeconds(0.4f);
-        GetComponent<Animator>().SetBool("FadeOut", false);
+
         GetComponent<Animator>().SetBool("FadeIn", true);
+
         yield return new WaitForSeconds(0.4f);
+
         GetComponent<Animator>().SetBool("FadeOut", false);
         GetComponent<Animator>().SetBool("FadeIn", false);
     }

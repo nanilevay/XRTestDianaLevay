@@ -13,6 +13,8 @@ public class MapInfo : MonoBehaviour
 
     public Grid grid;
 
+    public Material mat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +82,7 @@ public class MapInfo : MonoBehaviour
         foreach(Tile tile in Neighbours)
         {
             tile.Occupied = true;
+            tile.GetComponent<MeshRenderer>().material = mat;
         }
 
         // Clear list for next iteration
