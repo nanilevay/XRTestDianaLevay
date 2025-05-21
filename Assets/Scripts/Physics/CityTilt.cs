@@ -10,7 +10,11 @@ public class CityTilt : MonoBehaviour
 
     // Force to be applied with torque
     [SerializeField]
-    private float _forceStrength = 10;
+    private float _tilForce = 10;
+
+    // Force to be applied with torque
+    [SerializeField]
+    private float _spinForce = 10;
 
     // To store the x and y axis inputs 
     private Vector2 _mouseMovement;
@@ -30,25 +34,14 @@ public class CityTilt : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.centerOfMass = Vector3.zero;
+        rb.centerOfMass = new Vector3(0, -4, 0);
+        PhysicsOn = true;
+        rb.isKinematic = false;
     }
     private void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            PhysicsOn = true;
-            rb.isKinematic = false;
-            _mouseMovement.x = Input.GetAxis("Mouse X") * sensitivity;
-            _mouseMovement.y = Input.GetAxis("Mouse Y") * sensitivity;     
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            PhysicsOn = false;
-            rb.isKinematic = true;
-            _mouseMovement.x = 0;
-            _mouseMovement.y = 0;
-        }
+    { 
+        _mouseMovement.x = Input.GetAxis("Horizontal");
+        _mouseMovement.y = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate()
@@ -60,8 +53,14 @@ public class CityTilt : MonoBehaviour
             ReturnToOrigin();
     }
 
+    public void TogglePhysics()
+    {
+        PhysicsOn = !PhysicsOn;
+        rb.isKinematic = !rb.isKinematic;
+    }
+
     /// <summary>
-    /// Return the city back to its original setup - still fine tuning solution with physics
+    /// Return the city back to its original setup
     /// </summary>
     public void ReturnToOrigin()
     {
@@ -77,8 +76,11 @@ public class CityTilt : MonoBehaviour
 
     public void ApplyTorque()
     {
-        rb.AddTorque(transform.forward * _mouseMovement.x * _forceStrength, ForceMode.VelocityChange);
+        if (PhysicsOn)
+        {
+            rb.AddTorque(transform.forward * _mouseMovement.x * sensitivity * _tilForce, ForceMode.Impulse);
 
-        rb.AddTorque(transform.up * _mouseMovement.y * _forceStrength, ForceMode.VelocityChange);
+            rb.AddTorque(transform.up * _mouseMovement.y * sensitivity * _spinForce, ForceMode.VelocityChange);
+        }
     }
 }

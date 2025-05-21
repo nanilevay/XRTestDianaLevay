@@ -58,9 +58,6 @@ public class DragController : MonoBehaviour
                 // Spawn object on selected tile with due cell adjustments and parenting 
                 objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(hit.point, Map.grid));
             }
-
-            else
-                Debug.Log("Tile occupied");
         }
 
         ReleaseObject();

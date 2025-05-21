@@ -51,7 +51,17 @@ public class MapInfo : MonoBehaviour
         for (int row = TileCoords.x - coordinatesForX; row <= TileCoords.x + coordinatesForX; row++)
         {
             for (int col = TileCoords.y - coordinatesForY; col <= TileCoords.y + coordinatesForY; col++)
-            { 
+            {
+                if (col >= xSize || col <= 0)
+                {
+                    return false;
+                }
+
+                if (row >= xSize || row <= 0)
+                {
+                    return false;
+                }
+
                 // If the tile is occupied position isn't valid
                 if (!TilesInScene[row, col].Locked && TilesInScene[row, col].Occupied)
                 {
