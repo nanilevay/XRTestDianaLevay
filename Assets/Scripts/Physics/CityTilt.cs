@@ -10,14 +10,11 @@ public class CityTilt : MonoBehaviour
 
     // Force to be applied with torque
     [SerializeField]
-    private float _tilForce = 10;
+    private float _tiltForce = 10;
 
     // Force to be applied with torque
     [SerializeField]
     private float _spinForce = 10;
-
-    // To store the x and y axis inputs 
-    private Vector2 _mouseMovement;
 
     // To fine tune mouse sensitivity
     [SerializeField]
@@ -27,36 +24,11 @@ public class CityTilt : MonoBehaviour
     [SerializeField]
     private float _returnSpeed = 0.08f;
 
-    // testing - change later
-    public bool PhysicsOn = false;
-
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -4, 0);
-        PhysicsOn = true;
-        rb.isKinematic = false;
-    }
-    private void Update()
-    { 
-        _mouseMovement.x = Input.GetAxis("Horizontal");
-        _mouseMovement.y = Input.GetAxis("Vertical");
-    }
-
-    private void FixedUpdate()
-    {
-        if (PhysicsOn)
-            ApplyTorque();
-
-        else
-            ReturnToOrigin();
-    }
-
-    public void TogglePhysics()
-    {
-        PhysicsOn = !PhysicsOn;
-        rb.isKinematic = !rb.isKinematic;
     }
 
     /// <summary>
@@ -74,13 +46,15 @@ public class CityTilt : MonoBehaviour
             Quaternion.RotateTowards(transform.rotation, Quaternion.identity, step);
     }
 
-    public void ApplyTorque()
+    // Apply torque forces to the city based on user input
+    public void ApplyTorqueHorizontal(float Direction)
     {
-        if (PhysicsOn)
-        {
-            rb.AddTorque(transform.forward * _mouseMovement.x * sensitivity * _tilForce, ForceMode.Impulse);
+        rb.AddTorque(transform.forward * Direction * sensitivity * _tiltForce, ForceMode.Impulse);
+    }
 
-            rb.AddTorque(transform.up * _mouseMovement.y * sensitivity * _spinForce, ForceMode.VelocityChange);
-        }
+    public void ApplyTorqueVertical(float Direction)
+    {
+
+        rb.AddTorque(transform.up * Direction * sensitivity * _spinForce, ForceMode.VelocityChange);
     }
 }

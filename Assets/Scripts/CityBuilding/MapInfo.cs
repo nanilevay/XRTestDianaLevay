@@ -82,7 +82,9 @@ public class MapInfo : MonoBehaviour
         foreach(Tile tile in Neighbours)
         {
             tile.Occupied = true;
-            tile.GetComponent<MeshRenderer>().material = mat;
+
+            if(tile.Type == TypeOfTile.Terrain)
+                tile.GetComponent<MeshRenderer>().material = mat;
         }
 
         // Clear list for next iteration

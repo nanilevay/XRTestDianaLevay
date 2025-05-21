@@ -6,14 +6,6 @@ using UnityEngine.UI;
 /// </summary>
 public class UIDisplayer: MonoBehaviour
 {
-    // Get the game object containing the drag and drop UI features
-    [SerializeField]
-    private GameObject _dragUI;
-
-    // Get the game object containing the physics related UI features
-    [SerializeField]
-    private GameObject _physicsUI;
-
     // Get the slots from the drag UI to display each image
     [SerializeField]
     private Image[] _displaySlots;
