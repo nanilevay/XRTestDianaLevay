@@ -9,7 +9,7 @@ public class BuildingData : ScriptableObject
     public string objectName;
 
     // Size of the object in tiles for placement purposes
-    public int[,] objectSize;
+    public Vector2Int objectSize;
 
     // Sprite to be displayed on drag UI
     public Sprite objectImage;
