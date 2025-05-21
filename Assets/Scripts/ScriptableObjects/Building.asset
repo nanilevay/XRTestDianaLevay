@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5851c1cf5581f0e4da603b7489b4c875, type: 3}
   m_Name: Building
   m_EditorClassIdentifier: 
-  objectId: 0
   objectName: Apartment Building
+  objectSize: {x: 1, y: 1}
   objectImage: {fileID: 21300000, guid: 369ebece384da584c854d533faa006bd, type: 3}
   objectPrefab: {fileID: 100000, guid: bc2be6b699373cc45964ec5147aa0694, type: 3}
