@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 /// <summary>
 /// Drag an image from the UI into the grid then reset position
@@ -42,13 +43,27 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         ObjectPlacedEvent.Invoke(_currentPos.position);
 
         // Reset image position back to its slot
-        ResetPosition();
+        StartCoroutine(FadeAnimation());
     }
 
     // Return image to starting position after release
     private void ResetPosition()
     {
+        StartCoroutine(FadeAnimation());
         // Reset anchored position to 0,0
         _currentPos.anchoredPosition = Vector2.zero;
+    }
+
+    private IEnumerator FadeAnimation()
+    {
+        GetComponent<Animator>().SetBool("FadeOut", true);
+        yield return new WaitForSeconds(0.4f);
+        _currentPos.anchoredPosition = Vector2.zero;
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<Animator>().SetBool("FadeOut", false);
+        GetComponent<Animator>().SetBool("FadeIn", true);
+        yield return new WaitForSeconds(0.4f);
+        GetComponent<Animator>().SetBool("FadeOut", false);
+        GetComponent<Animator>().SetBool("FadeIn", false);
     }
 }
