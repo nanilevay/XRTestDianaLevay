@@ -49,7 +49,7 @@ public class CityTilt : MonoBehaviour
     // Apply torque forces to the city based on user input
     public void ApplyTorqueHorizontal(float Direction)
     {
-        rb.AddTorque(transform.forward * Direction * sensitivity * _tiltForce, ForceMode.Impulse);
+        rb.AddTorque(transform.forward * -Direction * sensitivity * _tiltForce, ForceMode.Impulse);
     }
 
     public void ApplyTorqueVertical(float Direction)

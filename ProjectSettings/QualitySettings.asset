@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 5
+  m_CurrentQuality: 2
   m_QualitySettings:
   - serializedVersion: 2
     name: Very Low
@@ -40,7 +40,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 025f401180aa17448a21484ec18bfb7c, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: df01f794d94052444acbfe4c03cdad48, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Low
@@ -76,7 +76,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 7eecc3644956fe642ad5c6afe081b013, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: df01f794d94052444acbfe4c03cdad48, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Medium
@@ -112,7 +112,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 87002bedf6558724fbae706c94b8d61b, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: df01f794d94052444acbfe4c03cdad48, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: High
@@ -148,7 +148,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 15fa386c0d85d104fa36c75e7315dad8, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: df01f794d94052444acbfe4c03cdad48, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Very High
@@ -184,10 +184,10 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 8544e6b0d494b4348963fbe06013dc7f, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: df01f794d94052444acbfe4c03cdad48, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
-    name: Ultra
+    name: Level 5
     pixelLightCount: 4
     shadows: 2
     shadowResolution: 2
