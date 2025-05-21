@@ -10,11 +10,11 @@ public class DragController : MonoBehaviour
 
     public Draggable[] DraggableObjects;
 
-    public Grid grid;
-
     public UIDisplayer ShowUI;
 
     public ObjectSpawner objectSpawner;
+
+    public MapInfo Map;
 
     void Awake()
     {
@@ -22,8 +22,6 @@ public class DragController : MonoBehaviour
         {
             DraggableObjects[i].ObjectChosenEvent += CheckChosenObject;
             DraggableObjects[i].ObjectPlacedEvent += CheckTileHit;
-
-            Debug.Log(BuildingsInScene[i].name);
 
             DraggableObjects[i].StoredBuilding = BuildingsInScene[i];
         }
@@ -54,17 +52,13 @@ public class DragController : MonoBehaviour
         // If terrain layer was hit
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, PlacementLayer))
         {
-            // Check if the tile isn't currently occupied
-            if (!hit.collider.gameObject.GetComponent<Tile>().Occupied)
+            // Check if the tile and surroundings aren't currently occupied
+            if (Map.CheckAvailable(hit.collider.GetComponent<Tile>().Coordinates, SelectedObject.objectSize))
             {
                 // Spawn object on selected tile with due cell adjustments and parenting 
-                objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(hit.point, grid));
-
-
-                //hit.collider.gameObject.GetComponent<Tile>().Occupied = true;
+                objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(hit.point, Map.grid));
             }
 
-            // 
             else
                 Debug.Log("Tile occupied");
         }

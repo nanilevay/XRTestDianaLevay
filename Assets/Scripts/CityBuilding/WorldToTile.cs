@@ -11,8 +11,12 @@ public static class WorldToTile
         // Get position on the cell grid based on clicked world position
         Vector3Int CellPos = grid.WorldToCell(WorldPos);
 
+        Debug.Log("world to cell: " + CellPos);
+
         // Center object on selected cell based on offset
         Vector3 FixedPos = grid.GetCellCenterWorld(CellPos);
+
+        Debug.Log("Cell center: " + FixedPos);
 
         // Adjust due to animation - test
         FixedPos.y += 1;

@@ -5,23 +5,16 @@ using UnityEngine;
 /// </summary>
 public class Tile : MonoBehaviour
 {
-    // Tile location within grid
-    public Vector2Int TileCoordinates;
+    public Vector2Int Coordinates;
 
     // Type of tile to determine if it can contain a building
-    public TypeOfTile TileType;
+    public TypeOfTile Type;
 
     // Check whether or not tile is currently occupied
     public bool Occupied;
 
     // If locked, a tile can't get occupied due to it's terrain type
     public bool Locked;
-
-    // Check if tile is storing a building and lock it
-    private void OnTriggerEnter(Collider other)
-    {
-        Occupied = true;   
-    }
 }
 
 /// <summary>
