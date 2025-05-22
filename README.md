@@ -13,7 +13,7 @@ The map is a 30x30 3D city consisting of tiles for terrain and roads, as well as
 
 The user can drag the buildings into the map, use WASD or arrow keys to tilt and spin the map, and toggle a snow effect on / off to tilt the snow off the screen. 
 
-![Main Scene]([image-url](https://github.com/nanilevay/XRTestDianaLevay/blob/main/1.png))
+<img width="705" alt="Image" src="https://github.com/user-attachments/assets/58da5c29-2338-40a4-bcc0-72744e8fbe10" />
 
 # User input
 - WASD / arrows to apply different torques
@@ -45,7 +45,7 @@ The user can drag the buildings into the map, use WASD or arrow keys to tilt and
 - 3 different house prefabs can be instantiated on the map with their specific sizes on the grid
 - Placing a building on a tile will change the tile colour as well as any other tiles the building is on
 
-![Maths Draft]([image-url](https://github.com/nanilevay/XRTestDianaLevay/blob/main/2.png))
+<img width="773" alt="Image" src="https://github.com/user-attachments/assets/e4179cfd-e692-4422-8e14-7ae31141dda1" />
 
 ### Physical interaction
 - The city can spin and be tilted using a rigidbody attached to the parent of the map to manipulate the whole city
@@ -55,7 +55,7 @@ The user can drag the buildings into the map, use WASD or arrow keys to tilt and
 - due to the importance of keeping items within their grid positions, the physics matrix is set in a way that buildings ignore collisions with tiles and the parent object to ensure steady tilting and avoid unnecessary behaviours with the physics system
 - Once the user toggles the physics "off", the rigidbody is set to kinematic in order to smoothly bring the position and rotation back
 
-![Physics Draft]([image-url](https://github.com/nanilevay/XRTestDianaLevay/blob/main/3.png))
+<img width="656" alt="Image" src="https://github.com/user-attachments/assets/4ae14f8e-a87d-4baf-b5c8-48d376236286" />
 
 ### Version Control
 There are two branches for testing the UI and Physics features separately, which were merged on main for the final result.
