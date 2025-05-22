@@ -13,7 +13,50 @@ The map is a 30x30 3D city consisting of tiles for terrain and roads, as well as
 
 The user can drag the buildings into the map, use WASD or arrow keys to tilt and spin the map, and toggle a snow effect on / off to tilt the snow off the screen. 
 
-UPDATING
+![alt text](image-url)
+
+# User input
+- WASD / arrows to apply different torques
+- Mouse drag and drop to grab from UI and place on world
+- Interactions with other buttons via mouse click
+
+### City Development
+- The city has 2 types of terrains (road and grass)
+- Users can drop buildings on grass terrains only
+- There are some pre-existing static buildings in the map
+
+## UI interaction
+- Simple 3 icon layout with 2d images - Apartment, House and Factory
+- User can drag images with mouse and place them on their desired tile
+- Two toggles - one for snow and another for physical interactions
+- A button to reset the scene and one to get information on how to interact
+
+## Transition from 2D to 3D:
+- drag and drop animation
+  - UI element shrinks as a 3D prefab falls onto the tile with a small particle "poof" effect
+  - 2d icon fades out then back in at original position
+  - 
+## Object Placement
+- Initial lay of tiles using tilemap - static map for this project for simplicity
+- Unity's grid system is used to calculate the position of a world point on the grid and center on the closest tile 
+- Array of tiles of different types (extended classes in future) that can either be locked or unlocked for placement
+- 3 different house prefabs can be instantiated on the map with their specific sizes on the grid
+- Placing a building on a tile will change the tile colour as well as any other tiles the building is on
+- Raycast from mouse to plane to get selected tile
+- Placement centers on tile from world space
+
+![alt text](image-url)
+
+# Physical interaction
+- The city can spin and be tilted using a rigidbody attached to the parent of the map (with a lowered center of gravity for a weighted and stable effect)
+- this object has a rigidbody attached to it, with a modified angular drag to avoid excessive dragging, the center of mass is set slightly below the object for intended effect
+- There are two torques applied separately with user input
+    - one spins on the Y axis, the other tilts on the X axis (different forces applied)
+- due to the importance of keeping items within their grid positions, the physics matrix is set in a way that buildings ignore collisions with tiles and the parent object to ensure steady tilting and avoid unnecessary behaviours with the physics system
+- Once the user toggles the physics off, the rigidbody is set to kinematic in order to smoothly bring the position and rotation back
+
+![alt text](image-url)
+
 
 ## Technical Specs:
 - Unity 2022.1.23f1
