@@ -2,33 +2,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Display the current level UI based on game state and draggable buildings
+/// This class displays the current level UI based on game state and available draggable objects
 /// </summary>
 public class UIDisplayer: MonoBehaviour
 {
-    // Get the slots from the drag UI to display each image
+    // Get images from drag UI slots to display each sprite
     [SerializeField]
     private Image[] _displaySlots;
 
-    // Start is called before the first frame update
+    // Iterate through scriptable objects and get their images to display
     public void DisplayBuildings(BuildingData[] DisplayData)
     {
-        // Display each scriptable object in the game's associated image
         for (int i = 0; i < _displaySlots.Length; i++)
         {
-            _displaySlots[i].sprite = DisplayData[i].objectImage;
+            _displaySlots[i].sprite = DisplayData[i].ObjectImage;
         }
-    }
-
-    // Show the specified UI type (drag / physics)
-    public void ShowUI(GameObject UIType)
-    {
-        UIType.SetActive(true);
-    }
-
-    // Hide the specified UI type (drag / physics)
-    public void HideUI(GameObject UIType)
-    {
-        UIType.SetActive(false);
     }
 }

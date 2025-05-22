@@ -1,19 +1,20 @@
 using UnityEngine;
 /// <summary>
-/// Spawn a prefab of a given object using it's position and parenting to the scene's grid
+/// This class spawns a prefab of a given object using it's position and parent
 /// </summary>
 public class ObjectSpawner : MonoBehaviour
 {
-    // Parent to align the child to
+    // Parent to assign the child to
     public Transform Parent;
 
     // Spawn given prefab on desired location
     public void SpawnPrefab(BuildingData ObjectToSpawn, Vector3 SpawnPosition)
     {
-        // Instantiate a new building on the correct tile center assuming the rotation of the grid
-        GameObject Instant = Instantiate(ObjectToSpawn.objectPrefab, SpawnPosition, Parent.transform.rotation);
+        // Instantiate given object on tile using parent's current rotation
+        GameObject Instant = 
+            Instantiate(ObjectToSpawn.ObjectPrefab, SpawnPosition, Parent.transform.rotation);
 
-        // Parent object to grid
+        // Parent object and keep grid placement
         Instant.transform.SetParent(Parent.transform, true);
 
         // Destroy the effect particle in prefab 2 seconds after spawning

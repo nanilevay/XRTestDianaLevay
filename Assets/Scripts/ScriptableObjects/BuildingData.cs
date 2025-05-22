@@ -1,19 +1,16 @@
 using UnityEngine;
 /// <summary>
-/// Store data for each building type that can be dragged onto the scene
+/// This class stores a building's necessary data for functionality
 /// </summary>
 [CreateAssetMenu(menuName ="Building Data")]
 public class BuildingData : ScriptableObject
 {
-    // Name of the building type to be displayed to user
-    public string objectName;
-
-    // Size of the object in tiles for placement purposes
-    public Vector2Int objectSize;
+    // Size of the object in tiles for map placement 
+    public Vector2Int ObjectSize;
 
     // Sprite to be displayed on drag UI
-    public Sprite objectImage;
+    public Sprite ObjectImage;
 
     // Prefab to be spawned on scene
-    public GameObject objectPrefab;   
+    public GameObject ObjectPrefab;   
 }

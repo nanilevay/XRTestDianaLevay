@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5851c1cf5581f0e4da603b7489b4c875, type: 3}
   m_Name: Factory
   m_EditorClassIdentifier: 
-  objectName: Factory
-  objectSize: {x: 3, y: 3}
-  objectImage: {fileID: 21300000, guid: 9cd8a3d75e25068459e812cbfa048aa4, type: 3}
-  objectPrefab: {fileID: 100000, guid: 5ddb10c85cd64ad4c9851a2fa62db2a2, type: 3}
+  ObjectSize: {x: 3, y: 3}
+  ObjectImage: {fileID: 21300000, guid: 9cd8a3d75e25068459e812cbfa048aa4, type: 3}
+  ObjectPrefab: {fileID: 100000, guid: 5ddb10c85cd64ad4c9851a2fa62db2a2, type: 3}

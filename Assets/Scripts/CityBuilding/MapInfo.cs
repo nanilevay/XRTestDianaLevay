@@ -1,45 +1,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class stores the information from the map and all tiles in the scene
+/// </summary>
 public class MapInfo : MonoBehaviour
 {
+    // Size of the array to store tiles
     public static int xSize = 30;
     public static int ySize = 30;
 
+    // Array containing all the tiles in scene
     [SerializeField]
     public Tile[,] TilesInScene;
 
-    public Transform _object;
-
-    public Grid grid;
-
+    // Material to change tiles that have become occupied
     public Material mat;
 
-    // Start is called before the first frame update
+    // Get the grid component for calculations
+    public Grid grid;
+
     void Start()
     {
-        // Get the grid component from game object
         grid = GetComponent<Grid>();
 
-        // Make a new array to sort all the tiles in the scene
+        // Make a new array to sort all the existing tiles in the scene
         TilesInScene = new Tile[xSize, ySize];
 
-        int ChildIndex = 0;
+        int childIndex = 0;
 
-        // Add tiles to array and set their coordinates based on the grid placement
+        // Add tiles to array and set their adjusted coordinates based on grid placement
         for (int i = 0; i < xSize; i++)
         {
             for (int j = 0; j < ySize; j++)
             {
-                TilesInScene[i, j] = _object.GetChild(ChildIndex).GetComponent<Tile>();
-                _object.GetChild(ChildIndex).GetComponent<Tile>().Coordinates = new Vector2Int(i,j);
+                TilesInScene[i, j] = transform.GetChild(childIndex).GetComponent<Tile>();
+                transform.GetChild(childIndex).GetComponent<Tile>().Coordinates = new Vector2Int(i,j);
 
-                ChildIndex++;
+                childIndex++;
             }
         }
     }
 
-    // Check availability of space based on the center tile and size of object being placed
+    // Check availability of neighbour tiles based on the center tile and size of object being placed
     public bool CheckAvailable(Vector2Int TileCoords, Vector2Int objectSize)
     {
         // To lock tiles whenever a selection is valid
@@ -49,36 +52,37 @@ public class MapInfo : MonoBehaviour
         int coordinatesForX = Mathf.RoundToInt(objectSize.x / 2);
         int coordinatesForY = Mathf.RoundToInt(objectSize.y / 2);
 
-        // Iterate through the specified places on grid
+        // Iterate through the specified places on grid and check for occupied tiles
         for (int row = TileCoords.x - coordinatesForX; row <= TileCoords.x + coordinatesForX; row++)
         {
             for (int col = TileCoords.y - coordinatesForY; col <= TileCoords.y + coordinatesForY; col++)
             {
-                if (col >= xSize || col <= 0)
+                // Check edges
+                if (row >= xSize || row < 0)
                 {
                     return false;
                 }
 
-                if (row >= xSize || row <= 0)
+                if (col >= xSize || col < 0)
                 {
                     return false;
                 }
 
-                // If the tile is occupied position isn't valid
+                // If the tile is occupied then this position isn't valid
                 if (!TilesInScene[row, col].Locked && TilesInScene[row, col].Occupied)
                 {
                     return false;
                 }
 
+                // If tile and neighbouring are free then add to list
                 else
                 {
-                    // If the tile isn't occupied then add to list
                     Neighbours.Add(TilesInScene[row, col]);
                 }
             }
         }
 
-        // Set the new occupied tiles
+        // Set the new occupied tiles and change colour
         foreach(Tile tile in Neighbours)
         {
             tile.Occupied = true;

@@ -1,10 +1,11 @@
 using UnityEngine;
 
 /// <summary>
-/// Store tile information during runtime
+/// This class stores tile information during runtime
 /// </summary>
 public class Tile : MonoBehaviour
 {
+    // Coordinates in the grid space
     public Vector2Int Coordinates;
 
     // Type of tile to determine if it can contain a building
