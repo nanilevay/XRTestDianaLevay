@@ -35,7 +35,7 @@ public class MapInfo : MonoBehaviour
             for (int j = 0; j < ySize; j++)
             {
                 TilesInScene[i, j] = transform.GetChild(childIndex).GetComponent<Tile>();
-                transform.GetChild(childIndex).GetComponent<Tile>().Coordinates = new Vector2Int(i,j);
+                transform.GetChild(childIndex).GetComponent<Tile>().Coordinates = new Vector2Int(i, j);
 
                 childIndex++;
             }
@@ -83,11 +83,11 @@ public class MapInfo : MonoBehaviour
         }
 
         // Set the new occupied tiles and change colour
-        foreach(Tile tile in Neighbours)
+        foreach (Tile tile in Neighbours)
         {
             tile.Occupied = true;
 
-            if(tile.Type == TypeOfTile.Terrain)
+            if (tile.Type == TypeOfTile.Terrain)
                 tile.GetComponent<MeshRenderer>().material = mat;
         }
 

@@ -52,10 +52,10 @@ public class CityTilt : MonoBehaviour
         float step = _returnSpeed * Time.deltaTime;
 
         // Set translation and rotation back towards origin smoothly
-        transform.position = 
+        transform.position =
             Vector3.MoveTowards(transform.position, Vector3.zero, step);
 
-        transform.rotation = 
+        transform.rotation =
             Quaternion.RotateTowards(transform.rotation, Quaternion.identity, step);
     }
 }

@@ -8,7 +8,7 @@ public class PhysicsInput : MonoBehaviour
 {
     // To store the x and y axis inputs 
     private float _verticalMovement;
-    
+
     private float _horizontalMovement;
 
     // Check if physical interactions toggle is on
@@ -40,7 +40,7 @@ public class PhysicsInput : MonoBehaviour
         // Return the city to it's original transform configuration
         else
         {
-            _tiltControl.ReturnToOrigin(); 
+            _tiltControl.ReturnToOrigin();
         }
     }
 
@@ -48,7 +48,7 @@ public class PhysicsInput : MonoBehaviour
     public void TogglePhysics()
     {
         PhysicsOn = !PhysicsOn;
-        _tiltControl.GetComponent<Rigidbody>().isKinematic = 
+        _tiltControl.GetComponent<Rigidbody>().isKinematic =
             !_tiltControl.GetComponent<Rigidbody>().isKinematic;
     }
 }

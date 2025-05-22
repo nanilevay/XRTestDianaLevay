@@ -11,7 +11,7 @@ public class ObjectSpawner : MonoBehaviour
     public void SpawnPrefab(BuildingData ObjectToSpawn, Vector3 SpawnPosition)
     {
         // Instantiate given object on tile using parent's current rotation
-        GameObject Instant = 
+        GameObject Instant =
             Instantiate(ObjectToSpawn.ObjectPrefab, SpawnPosition, Parent.transform.rotation);
 
         // Parent object and keep grid placement

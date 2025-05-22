@@ -2,7 +2,7 @@ using UnityEngine;
 /// <summary>
 /// This class stores a building's necessary data for functionality
 /// </summary>
-[CreateAssetMenu(menuName ="Building Data")]
+[CreateAssetMenu(menuName = "Building Data")]
 public class BuildingData : ScriptableObject
 {
     // Size of the object in tiles for map placement 
@@ -12,5 +12,5 @@ public class BuildingData : ScriptableObject
     public Sprite ObjectImage;
 
     // Prefab to be spawned on scene
-    public GameObject ObjectPrefab;   
+    public GameObject ObjectPrefab;
 }

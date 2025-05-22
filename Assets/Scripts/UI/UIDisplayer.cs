@@ -4,7 +4,7 @@ using UnityEngine.UI;
 /// <summary>
 /// This class displays the current level UI based on game state and available draggable objects
 /// </summary>
-public class UIDisplayer: MonoBehaviour
+public class UIDisplayer : MonoBehaviour
 {
     // Get images from drag UI slots to display each sprite
     [SerializeField]
