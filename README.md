@@ -13,7 +13,7 @@ The map is a 30x30 3D city consisting of tiles for terrain and roads, as well as
 
 The user can drag the buildings into the map, use WASD or arrow keys to tilt and spin the map, and toggle a snow effect on / off to tilt the snow off the screen. 
 
-![alt text](image-url)
+![Main Scene]([image-url](https://github.com/nanilevay/XRTestDianaLevay/blob/main/1.png))
 
 # User input
 - WASD / arrows to apply different torques
@@ -25,50 +25,46 @@ The user can drag the buildings into the map, use WASD or arrow keys to tilt and
 - Users can drop buildings on grass terrains only
 - There are some pre-existing static buildings in the map
 
-## UI interaction
-- Simple 3 icon layout with 2d images - Apartment, House and Factory
+### UI interaction
+- Simple 3 icon layout with 2D images - Apartment, House and Factory
 - User can drag images with mouse and place them on their desired tile
 - Two toggles - one for snow and another for physical interactions
 - A button to reset the scene and one to get information on how to interact
 
-## Transition from 2D to 3D:
+### Transition from 2D to 3D:
 - drag and drop animation
-  - UI element shrinks as a 3D prefab falls onto the tile with a small particle "poof" effect
-  - 2d icon fades out then back in at original position
-  - 
-## Object Placement
+  - UI element fades out as a 3D prefab falls onto the tile with a small particle "poof" effect
+  - UI element fades back in at its original position
+  - Tiles change colour to showcase newly placed building
+    
+### Object Placement
 - Initial lay of tiles using tilemap - static map for this project for simplicity
+- Raycast from mouse to plane to get selected tile
 - Unity's grid system is used to calculate the position of a world point on the grid and center on the closest tile 
 - Array of tiles of different types (extended classes in future) that can either be locked or unlocked for placement
 - 3 different house prefabs can be instantiated on the map with their specific sizes on the grid
 - Placing a building on a tile will change the tile colour as well as any other tiles the building is on
-- Raycast from mouse to plane to get selected tile
-- Placement centers on tile from world space
 
-![alt text](image-url)
+![Maths Draft]([image-url](https://github.com/nanilevay/XRTestDianaLevay/blob/main/2.png))
 
-# Physical interaction
-- The city can spin and be tilted using a rigidbody attached to the parent of the map (with a lowered center of gravity for a weighted and stable effect)
+### Physical interaction
+- The city can spin and be tilted using a rigidbody attached to the parent of the map to manipulate the whole city
 - this object has a rigidbody attached to it, with a modified angular drag to avoid excessive dragging, the center of mass is set slightly below the object for intended effect
 - There are two torques applied separately with user input
     - one spins on the Y axis, the other tilts on the X axis (different forces applied)
 - due to the importance of keeping items within their grid positions, the physics matrix is set in a way that buildings ignore collisions with tiles and the parent object to ensure steady tilting and avoid unnecessary behaviours with the physics system
-- Once the user toggles the physics off, the rigidbody is set to kinematic in order to smoothly bring the position and rotation back
+- Once the user toggles the physics "off", the rigidbody is set to kinematic in order to smoothly bring the position and rotation back
 
-![alt text](image-url)
+![Physics Draft]([image-url](https://github.com/nanilevay/XRTestDianaLevay/blob/main/3.png))
 
+### Version Control
+There are two branches for testing the UI and Physics features separately, which were merged on main for the final result.
 
-## Technical Specs:
-- Unity 2022.1.23f1
-- URP 
-- Github Desktop 
-- Visual Studio
+### Known bugs:
+- Neighbouring doesn't check for road tiles so house edge can overlap - easy fix on method
+- No feedback on neighbouring tiles when hovering with mouse, only upon placement
 
-## Known bugs:
-- neighbouring doesn't check for road tiles so house edge can overlap - easy fix on method
-- no feedback on neighbouring tiles when hovering with mouse, only upon placement
-
-## Technical Specs:
+### Technical Specs:
 - Unity 2022.1.23f1
 - URP 
 - Github Desktop 
@@ -81,10 +77,7 @@ No build specifications were given for this project so the target is Windows, ho
 - Basic URP post processing vignette only
 - Particle physics adhering to planes and not the entire space
 
-## Version Control
-There are two branches for testing the UI and Physics features separately, which were merged on main for the final result.
-
-## Packages used
+### Packages used
 - [3D City assets](https://assetstore.unity.com/packages/3d/environments/simplepoly-city-low-poly-assets-58899)
 - [Snow Particle System](https://assetstore.unity.com/packages/vfx/particles/environment/hail-particles-pack-62038) (modified to fit project)
 - [Smoke Effect](assetstore.unity.com/account/assets)
