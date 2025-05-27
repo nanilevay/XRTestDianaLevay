@@ -11,6 +11,8 @@ public class DragController : MonoBehaviour
     // Currently selected object from UI
     private BuildingData SelectedObject;
 
+    private Vector3 CurrentPos;
+
     // Get terrain layer for raycast detection
     public LayerMask PlacementLayer;
 
@@ -23,8 +25,18 @@ public class DragController : MonoBehaviour
     // Display the UI with the correct data
     public UIDisplayer ShowUI;
 
+    public ObjectPreview objectPreview;
+
     // To spawn objects at the selected coordinate 
     public ObjectSpawner objectSpawner;
+
+    [SerializeField]
+    private bool Dragging = false;
+
+    private Quaternion CurrentRot = new Quaternion(0,0,0,0);
+
+    private Vector3 CurrentPosition;
+
 
     void Awake()
     {
@@ -32,6 +44,7 @@ public class DragController : MonoBehaviour
         for (int i = 0; i < DraggableObjects.Length; i++)
         {
             DraggableObjects[i].ObjectChosenEvent += CheckChosenObject;
+            DraggableObjects[i].DraggingObjectEvent += ShowObjectPreview;
             DraggableObjects[i].ObjectPlacedEvent += CheckTileHit;
 
             // Get the current buildings in the scene
@@ -40,6 +53,30 @@ public class DragController : MonoBehaviour
 
         // Display current buildings 
         ShowUI.DisplayBuildings(ObjectsInScene);
+    }
+
+    void Update()
+    {
+        if (Dragging)
+        {
+            if(SelectedObject != null)
+                objectPreview.ShowObjectPreview(SelectedObject, WorldToTile.CalculateTile(CurrentPosition, Map.grid));
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Dragging)
+        {
+            // Cast a ray from the camera to the mouse position
+            Ray ray = Camera.main.ScreenPointToRay(CurrentPos);
+
+            // If terrain layer was hit
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000, PlacementLayer))
+            {
+                CurrentPosition = WorldToTile.CalculateTile(hit.point, Map.grid);
+            }
+        }
     }
 
     void OnDestroy()
@@ -55,10 +92,16 @@ public class DragController : MonoBehaviour
     // Get the currently selected building from player input on begin drag
     public void CheckChosenObject(BuildingData ChosenObject)
     {
+        Dragging = true;
         SelectedObject = ChosenObject;
     }
 
-    // Check if terrain tile was hit for object placement
+    public void ShowObjectPreview(Vector3 currentPos)
+    {
+        CurrentPos = currentPos;
+    }
+
+   // Check if terrain tile was hit for object placement
     public void CheckTileHit(Vector3 Position)
     {
         // Cast a ray from the camera to the mouse position
@@ -71,7 +114,9 @@ public class DragController : MonoBehaviour
             if (Map.CheckAvailable(hit.collider.GetComponent<Tile>().Coordinates, SelectedObject.ObjectSize))
             {
                 // Spawn object on selected tile with due cell adjustments and parenting 
-                objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(hit.point, Map.grid));
+                objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(hit.point, Map.grid), objectPreview.Rotation.eulerAngles);
+                objectPreview.StopObjectPreview();
+                Dragging = false;
             }
         }
 

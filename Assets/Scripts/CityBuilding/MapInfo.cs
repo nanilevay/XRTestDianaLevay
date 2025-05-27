@@ -69,7 +69,7 @@ public class MapInfo : MonoBehaviour
                 }
 
                 // If the tile is occupied then this position isn't valid
-                if (!TilesInScene[row, col].Locked && TilesInScene[row, col].Occupied)
+                if (TilesInScene[row, col].Locked || TilesInScene[row, col].Occupied)
                 {
                     return false;
                 }

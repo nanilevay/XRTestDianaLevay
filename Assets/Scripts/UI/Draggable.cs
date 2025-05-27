@@ -17,8 +17,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     // Set an event to notify of chosen object action
     public event System.Action<BuildingData> ObjectChosenEvent;
 
+    public event System.Action<Vector3> DraggingObjectEvent;
+
     // Set an event to notify of object placed action
     public event System.Action<Vector3> ObjectPlacedEvent;
+
+    [SerializeField]
+    private float AnimationWaitTime = 0.4f;
 
     void Awake()
     {
@@ -35,6 +40,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         // Follow mouse position with selected image
         _currentPos.position = eventData.position;
+
+        DraggingObjectEvent.Invoke(_currentPos.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -51,15 +58,15 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         GetComponent<Animator>().SetBool("FadeOut", true);
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(AnimationWaitTime);
 
         ResetPosition();
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(AnimationWaitTime);
 
         GetComponent<Animator>().SetBool("FadeIn", true);
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(AnimationWaitTime);
 
         GetComponent<Animator>().SetBool("FadeOut", false);
         GetComponent<Animator>().SetBool("FadeIn", false);
