@@ -17,7 +17,7 @@ public class ObjectSpawner : MonoBehaviour
         // Parent object and keep grid placement
         Instant.transform.SetParent(Parent.transform, true);
 
-       // Instant.transform.Rotate(SpawnRotation, Space.Self);
+        Instant.transform.Rotate(SpawnRotation, Space.Self);
 
         // Destroy the effect particle in prefab 2 seconds after spawning
         Destroy(Instant.GetComponentInChildren<ParticleSystem>().gameObject, 2f);

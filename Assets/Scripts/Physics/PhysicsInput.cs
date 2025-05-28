@@ -18,6 +18,13 @@ public class PhysicsInput : MonoBehaviour
     [SerializeField]
     private CityTilt _tiltControl;
 
+    private Rigidbody _tiltBody;
+
+    private void Awake()
+    {
+        _tiltBody = _tiltControl.GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         // Get user input every frame
@@ -48,7 +55,6 @@ public class PhysicsInput : MonoBehaviour
     public void TogglePhysics()
     {
         PhysicsOn = !PhysicsOn;
-        _tiltControl.GetComponent<Rigidbody>().isKinematic =
-            !_tiltControl.GetComponent<Rigidbody>().isKinematic;
+        _tiltBody.isKinematic = !_tiltBody.isKinematic;
     }
 }

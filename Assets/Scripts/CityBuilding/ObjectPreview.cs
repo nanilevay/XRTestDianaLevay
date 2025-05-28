@@ -29,6 +29,8 @@ public class ObjectPreview : MonoBehaviour
     {   
         PreviewObject.GetComponent<MeshFilter>().mesh = objectToShow.ObjectPrefab.GetComponent<MeshFilter>().sharedMesh;
 
+        PreviewObject.transform.localScale = objectToShow.ObjectPrefab.transform.localScale;
+
         PreviewObject.SetActive(true);
 
         PreviewObject.GetComponent<Renderer>().material = ValidMaterial;

@@ -43,14 +43,25 @@ public class MapInfo : MonoBehaviour
     }
 
     // Check availability of neighbour tiles based on the center tile and size of object being placed
-    public bool CheckAvailable(Vector2Int TileCoords, Vector2Int objectSize)
+    public bool CheckAvailable(Vector2Int TileCoords, Vector2Int objectSize, Vector3 objectRotation)
     {
         // To lock tiles whenever a selection is valid
         List<Tile> Neighbours = new List<Tile>();
 
-        // Get the max tiles forward / backward from the center tile
-        int coordinatesForX = Mathf.RoundToInt(objectSize.x / 2);
-        int coordinatesForY = Mathf.RoundToInt(objectSize.y / 2);
+        int coordinatesForX; int coordinatesForY;
+        if (objectRotation.y == 90 || objectRotation.y == 270)
+        {
+            // Get the max tiles forward / backward from the center tile
+            coordinatesForX = Mathf.RoundToInt(objectSize.y / 2);
+            coordinatesForY = Mathf.RoundToInt(objectSize.x / 2);
+        }
+
+        else
+        {
+            // Get the max tiles forward / backward from the center tile
+            coordinatesForX = Mathf.RoundToInt(objectSize.x / 2);
+            coordinatesForY = Mathf.RoundToInt(objectSize.y / 2);
+        }
 
         // Iterate through the specified places on grid and check for occupied tiles
         for (int row = TileCoords.x - coordinatesForX; row <= TileCoords.x + coordinatesForX; row++)
@@ -63,7 +74,7 @@ public class MapInfo : MonoBehaviour
                     return false;
                 }
 
-                if (col >= xSize || col < 0)
+                if (col >= ySize || col < 0)
                 {
                     return false;
                 }

@@ -35,6 +35,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         // Send event with stored building to controller
         ObjectChosenEvent.Invoke(StoredBuilding);
+        FadeOutAnimation();
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -50,7 +51,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         ObjectPlacedEvent.Invoke(_currentPos.position);
 
         // Reset image position back to its slot
-        StartCoroutine(FadeAnimation());
+        //StartCoroutine(FadeAnimation());
+
+        StartCoroutine(FadeInAnimation());
     }
 
     // Animate image with simple fade effect
@@ -63,6 +66,23 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         ResetPosition();
 
         yield return new WaitForSeconds(AnimationWaitTime);
+
+        GetComponent<Animator>().SetBool("FadeIn", true);
+
+        yield return new WaitForSeconds(AnimationWaitTime);
+
+        GetComponent<Animator>().SetBool("FadeOut", false);
+        GetComponent<Animator>().SetBool("FadeIn", false);
+    }
+
+    void FadeOutAnimation()
+    {
+        GetComponent<Animator>().SetBool("FadeOut", true);
+    }
+
+    private IEnumerator FadeInAnimation()
+    {
+        ResetPosition();
 
         GetComponent<Animator>().SetBool("FadeIn", true);
 

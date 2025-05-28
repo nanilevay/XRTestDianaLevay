@@ -111,14 +111,16 @@ public class DragController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, PlacementLayer))
         {
             // Check if the tile and surroundings aren't currently occupied
-            if (Map.CheckAvailable(hit.collider.GetComponent<Tile>().Coordinates, SelectedObject.ObjectSize))
+            if (Map.CheckAvailable(hit.collider.GetComponent<Tile>().Coordinates, SelectedObject.ObjectSize, objectPreview.Rotation.eulerAngles))
             {
                 // Spawn object on selected tile with due cell adjustments and parenting 
                 objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(hit.point, Map.grid), objectPreview.Rotation.eulerAngles);
-                objectPreview.StopObjectPreview();
-                Dragging = false;
+                
             }
         }
+
+        objectPreview.StopObjectPreview();
+        Dragging = false;
 
         ReleaseObject();
     }
