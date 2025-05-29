@@ -41,7 +41,7 @@ public class CityTilt : MonoBehaviour
     // Apply an acceleration that rotates the map around itself on the Y axis - not mass conscious
     public void ApplyTorqueVertical(float Direction)
     {
-        rb.AddTorque(transform.up * Direction * sensitivity * _spinForce, ForceMode.Acceleration);
+        rb.AddTorque(rb.transform.position * Direction * sensitivity * _spinForce, ForceMode.Acceleration);
     }
 
     /// <summary>

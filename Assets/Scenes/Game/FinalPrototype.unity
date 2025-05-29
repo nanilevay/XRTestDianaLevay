@@ -28590,7 +28590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tiltForce: 10
-  _spinForce: 10
+  _spinForce: 6
   sensitivity: 1
   _returnSpeed: 80
 --- !u!65 &854091202

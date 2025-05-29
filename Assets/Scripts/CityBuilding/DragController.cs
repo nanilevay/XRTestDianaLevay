@@ -33,8 +33,6 @@ public class DragController : MonoBehaviour
     [SerializeField]
     private bool Dragging = false;
 
-    private Quaternion CurrentRot = new Quaternion(0,0,0,0);
-
     private Vector3 CurrentPosition;
 
 
@@ -104,6 +102,8 @@ public class DragController : MonoBehaviour
    // Check if terrain tile was hit for object placement
     public void CheckTileHit(Vector3 Position)
     {
+        objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(CurrentPosition, Map.grid), objectPreview.Rotation.eulerAngles);
+
         // Cast a ray from the camera to the mouse position
         Ray ray = Camera.main.ScreenPointToRay(Position);
 
@@ -114,7 +114,7 @@ public class DragController : MonoBehaviour
             if (Map.CheckAvailable(hit.collider.GetComponent<Tile>().Coordinates, SelectedObject.ObjectSize, objectPreview.Rotation.eulerAngles))
             {
                 // Spawn object on selected tile with due cell adjustments and parenting 
-                objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(hit.point, Map.grid), objectPreview.Rotation.eulerAngles);
+                objectSpawner.SpawnPrefab(SelectedObject, WorldToTile.CalculateTile(CurrentPosition, Map.grid), objectPreview.Rotation.eulerAngles);
                 
             }
         }
